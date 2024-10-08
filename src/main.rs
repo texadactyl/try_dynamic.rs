@@ -61,7 +61,7 @@ fn main() {
     }
 
     // The function name we want to call (e.g., "crc32")
-    let func_name = "crc32";
+    let func_name = "ZIP_CRC32";
 
     // Example input data to pass to the function
     let str = "Mary had a little lamb whose fleece was white as snow!";
@@ -84,4 +84,5 @@ fn main() {
     };
     let expected:u32 = 0xc2d80bc5;
     assert_eq!(observed, expected, "{:08x} = {:08x} ?", observed, expected);
+    println!("main: Success!");
 }
