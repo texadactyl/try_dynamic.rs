@@ -17,6 +17,7 @@ fn call_dynamic_function(jvm_lib_path: &str, zip_lib_path: &str, func_name: &str
     unsafe {
         // Load the function by name
         let func: Symbol<unsafe extern fn(u32, *const c_void, u32) -> u32> = libzip.get(func_name.as_bytes())?;
+        println!("call_dynamic_function: func Symbol assigned");
 
         // Call the function inside the `unsafe` block
         let initial_crc = 0u32;
@@ -38,9 +39,9 @@ fn main() {
         Ok(value) => {
             java_home = value;
         }
-        Err(e) => { 
-            println!("main: Couldn't read JAVA_HOME: {}", e); 
-            process::exit(1); 
+        Err(e) => {
+            println!("main: Couldn't read JAVA_HOME: {}", e);
+            process::exit(1);
         },
     }
 
@@ -78,10 +79,9 @@ fn main() {
         },
         Err(e) => {
             eprintln!("main: Error: {}", e);
-            process::exit(1); 
+            process::exit(1);
         },
     };
     let expected:u32 = 0xc2d80bc5;
     assert_eq!(observed, expected, "{:08x} = {:08x} ?", observed, expected);
 }
-
