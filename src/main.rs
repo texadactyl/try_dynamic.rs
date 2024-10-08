@@ -65,7 +65,7 @@ fn main() {
 
     // Example input data to pass to the function
     let str = "Mary had a little lamb whose fleece was white as snow!";
-    println!("Let's hash the following with Java's CRC32.update function: {}", str);
+    println!("Let's hash the following with Java's {} function: {}", func_name, str);
     let bytes=str.as_bytes();
 
     // Observed result.
